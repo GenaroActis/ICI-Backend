@@ -35,7 +35,7 @@ if(NODEENV === 'development'){
     logConfig ={
         levels: logLevels,
         transports: [
-            new winston.transports.Console({ level: "error" }),
+            new winston.transports.Console({level:'error'}),
         ]
     };
 }
@@ -43,7 +43,7 @@ if(NODEENV !== 'development' && NODEENV !== 'production'){
     logConfig ={
         levels: logLevels,
         transports: [
-            new winston.transports.Console({ level: "error" }),
+            new winston.transports.Console(),
         ]
     };
 }

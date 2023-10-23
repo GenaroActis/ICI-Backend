@@ -81,7 +81,6 @@ export const modifyStudentController = async ( req, res , next) =>{
             id,
             { firstName, lastName, email, birth, dni, houseAddress, cellphone, previousLevel, medicalObservations, preferredTime, paymentMethod }
         );
-        console.log(studentUpdated)
         if(studentUpdated === 'repeatedDni') return httpResponse.BadRequest(res, 'RepeatedDni')
         if(studentUpdated.modifiedCount === 0) return httpResponse.NotFound(res, 'StudentNotFound')
         return httpResponse.Ok(res, studentUpdated)

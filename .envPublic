@@ -1,0 +1,4 @@
+PORT= 8080
+MONGODBURL= ''
+NODEENV= 'development or production'
+FRONTURL= ''

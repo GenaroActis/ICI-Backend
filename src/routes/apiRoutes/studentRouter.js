@@ -6,13 +6,14 @@ import {
     deleteStudentController,
     modifyStudentController
 } from '../../controllers/studentController.js';
+import { ensureIsOwnerOrAdmin } from '../../middlewares/ensureIsOwnerOrAdmin.js'
 import { checkAuth } from '../../jwt/auth.js';
 const router = Router();
 
 router.post('/register', registerStudentController);
-router.get('/', getAllStudentsController);
-router.get('/:id', getStudentByIdController);
-router.delete('/:id', checkAuth, deleteStudentController);
-router.put('/:id', checkAuth, modifyStudentController);
+router.get('/', checkAuth, getAllStudentsController);
+router.get('/:id', checkAuth, getStudentByIdController);
+router.delete('/:id', checkAuth, ensureIsOwnerOrAdmin, deleteStudentController);
+router.put('/:id', checkAuth, ensureIsOwnerOrAdmin, modifyStudentController);
 
 export default router;

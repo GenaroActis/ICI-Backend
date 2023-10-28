@@ -38,7 +38,7 @@ export const getAllStudentsController = async ( req, res, next) =>{
     } catch (error) {
         logger.error(error);
         next(error);
-    }
+    };
 };
 
 export const getStudentByIdController = async ( req, res, next ) =>{
@@ -81,9 +81,9 @@ export const modifyStudentController = async ( req, res , next) =>{
             id,
             { firstName, lastName, email, birth, dni, houseAddress, cellphone, previousLevel, medicalObservations, preferredTime, paymentMethod }
         );
-        if(studentUpdated === 'repeatedDni') return httpResponse.BadRequest(res, 'RepeatedDni')
-        if(studentUpdated.modifiedCount === 0) return httpResponse.NotFound(res, 'StudentNotFound')
-        return httpResponse.Ok(res, studentUpdated)
+        if(studentUpdated === 'repeatedDni') return httpResponse.BadRequest(res, 'RepeatedDni');
+        if(studentUpdated.modifiedCount === 0) return httpResponse.NotFound(res, 'StudentNotFound');
+        return httpResponse.Ok(res, studentUpdated);
     } catch (error) {
         logger.error(error);
         next(error);

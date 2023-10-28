@@ -13,6 +13,7 @@ const StudentSchema = new mongoose.Schema({
     medicalObservations: {type: String, default: null },
     preferredTime: {type: String, required: true },
     paymentMethod: {type: String, required: true, index: true },
+    itsPaid: {type: Boolean, default:false},
     registrationDate: { type: Date, default: Date.now, index: true }
 });
 

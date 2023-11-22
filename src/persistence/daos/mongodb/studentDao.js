@@ -8,8 +8,8 @@ export default class StudentDaoMongoDB {
             const existStudent = await StudentModel.findOne({dni});
             if(existStudent) return false
             else {
-                await StudentModel.create(studentData)
-                return true 
+                const response = await StudentModel.create(studentData)
+                return true
             };
         } catch (error) {
             logger.error(error);
@@ -58,6 +58,20 @@ export default class StudentDaoMongoDB {
         } catch (error) {
             logger.error(error);
             if (error.keyPattern.dni) return 'repeatedDni';
+            throw new Error(error);
+        };
+    };
+    async savePaymentReceipt (userId, docUrl){
+        try {
+            const response = await StudentModel.updateOne(
+                {_id: userId},
+                {$set: {
+                    paymentReceipt: docUrl
+                }}
+            );
+            return response
+        } catch (error) {
+            logger.error(error);
             throw new Error(error);
         };
     };

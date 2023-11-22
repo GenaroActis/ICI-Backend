@@ -2,12 +2,17 @@ import StudentDaoMongoDB from "../persistence/daos/mongodb/studentDao.js";
 import { HttpResponse } from "../utils/httpResponse.js";
 import { FRONTURL } from "../config.js";
 import logger from '../utils/logger.js';
+import { uploadPayment } from '../middlewares/multer.js'
 const httpResponse = new HttpResponse();
 const studentDao = new StudentDaoMongoDB();
 
 export const registerStudentController = async ( req, res, next ) =>{
     try {
-        const newStudent = await studentDao.registerStudent(req.body);
+        console.log('olaaaaaaaaaaaa+a+as6d4a5s6+d4as65')
+        const userData = JSON.parse(req.body.studentData)
+        console.log(req.file)
+        // uploadPayment(req.file)
+        const newStudent = await studentDao.registerStudent(userData);
         if(newStudent === false) return httpResponse.Conflict(res, 'DNIAlreadyRegistered');
         if(newStudent === true) return httpResponse.Ok(res, 'SuccessfullyRegisteredStudent');
     } catch (error) {

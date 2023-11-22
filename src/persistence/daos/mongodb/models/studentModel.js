@@ -14,7 +14,8 @@ const StudentSchema = new mongoose.Schema({
     preferredTime: {type: String, required: true },
     paymentMethod: {type: String, required: true, index: true },
     itsPaid: {type: Boolean, default:false},
-    registrationDate: { type: Date, default: Date.now, index: true }
+    registrationDate: { type: Date, default: Date.now, index: true },
+    paymentReceipt: { type: String, default:null }
 });
 
 StudentSchema.plugin(mongoosePaginate);

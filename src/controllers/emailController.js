@@ -31,7 +31,7 @@ export const teacherRegistrationEmailController = async (req, res, next) =>{
             html: `
             <div class='card'>
                 <h1>Ingresa al siguiente link y completa el formulario</h1>
-                <a href=${FRONTURL}/teacher/${saveToken._id} >Registrarse</a>
+                <a href=${FRONTURL}/register/${saveToken._id} >Registrarse</a>
             </div>
             `
         };
